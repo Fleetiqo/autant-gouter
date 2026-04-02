@@ -10,7 +10,10 @@ function handleScroll() {
   scrolled.value = window.scrollY > 20
 }
 
-onMounted(() => window.addEventListener('scroll', handleScroll))
+onMounted(() => {
+  handleScroll()
+  window.addEventListener('scroll', handleScroll)
+})
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 const links = [
@@ -31,7 +34,13 @@ const links = [
     <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
       <!-- Logo -->
       <RouterLink to="/" class="flex items-center gap-2" @click="menuOpen = false">
-        <span class="text-xl font-bold text-[#4A7C59]" style="font-family: 'Nunito', sans-serif;">
+        <span
+          :class="[
+            'text-xl font-bold transition-colors',
+            scrolled ? 'text-[#4A7C59]' : 'text-white drop-shadow-sm'
+          ]"
+          style="font-family: 'Nunito', sans-serif;"
+        >
           🌿 Autant Goûter
         </span>
       </RouterLink>
@@ -43,8 +52,14 @@ const links = [
           :key="link.to"
           :to="link.to"
           :class="[
-            'text-sm font-semibold transition-colors hover:text-[#4A7C59]',
-            route.path === link.to ? 'text-[#4A7C59] border-b-2 border-[#4A7C59]' : 'text-[#333333]'
+            'text-sm font-semibold transition-colors border-b-2 border-transparent',
+            scrolled
+              ? route.path === link.to
+                ? 'text-[#4A7C59] border-[#4A7C59]'
+                : 'text-[#333333] hover:text-[#4A7C59]'
+              : route.path === link.to
+                ? 'text-white border-[#D4845A] drop-shadow-sm'
+                : 'text-white/95 hover:text-[#D4845A] drop-shadow-sm',
           ]"
         >
           {{ link.label }}
@@ -61,7 +76,10 @@ const links = [
 
       <!-- Burger mobile -->
       <button
-        class="md:hidden p-2 text-[#4A7C59]"
+        :class="[
+          'md:hidden p-2 transition-colors',
+          scrolled ? 'text-[#4A7C59]' : 'text-white drop-shadow-sm',
+        ]"
         @click="menuOpen = !menuOpen"
         aria-label="Menu"
       >
