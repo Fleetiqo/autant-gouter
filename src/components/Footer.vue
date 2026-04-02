@@ -1,11 +1,19 @@
+<script setup>
+import SvgIcon from './SvgIcon.vue'
+</script>
+
 <template>
   <footer class="bg-[#333333] text-white pt-12 pb-6">
     <div class="max-w-6xl mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
         <!-- Marque -->
         <div>
-          <h3 class="text-xl font-bold text-[#4A7C59] mb-2" style="font-family: 'Nunito', sans-serif;">
-            🌿 Autant Goûter
+          <h3
+            class="text-xl font-bold text-[#4A7C59] mb-2 flex items-center gap-2"
+            style="font-family: 'Nunito', sans-serif;"
+          >
+            <SvgIcon name="leaf" class="w-6 h-6 text-[#4A7C59]" />
+            Autant Goûter
           </h3>
           <p class="text-gray-400 text-sm leading-relaxed mb-3">
             Café-restaurant bio, bon et local.<br>
@@ -27,9 +35,10 @@
           <div class="mt-4">
             <a
               href="tel:5148332707"
-              class="text-[#D4845A] font-semibold hover:text-[#e09070] transition-colors"
+              class="inline-flex items-center gap-2 text-[#D4845A] font-semibold hover:text-[#e09070] transition-colors"
             >
-              📞 514-833-2707
+              <SvgIcon name="phone" class="w-4 h-4 shrink-0" />
+              514-833-2707
             </a>
           </div>
         </div>
@@ -44,17 +53,19 @@
               href="https://maps.google.com/?q=252+Boulevard+de+Sainte-Adèle,+Sainte-Adèle,+QC"
               target="_blank"
               rel="noopener"
-              class="text-sm text-[#4A7C59] hover:text-green-400 transition-colors"
+              class="inline-flex items-center gap-2 text-sm text-[#4A7C59] hover:text-green-400 transition-colors"
             >
-              📍 Voir sur Google Maps
+              <SvgIcon name="mapPin" class="w-4 h-4 shrink-0" />
+              Voir sur Google Maps
             </a>
             <a
               href="https://www.doordash.com/store/autant-go%C3%BBter-sainte-ad%C3%A8le-27829588/"
               target="_blank"
               rel="noopener"
-              class="text-sm text-[#D4845A] hover:text-[#e09070] transition-colors"
+              class="inline-flex items-center gap-2 text-sm text-[#D4845A] hover:text-[#e09070] transition-colors"
             >
-              🛵 Commander via DoorDash
+              <SvgIcon name="truck" class="w-4 h-4 shrink-0" />
+              Commander via DoorDash
             </a>
           </div>
         </div>

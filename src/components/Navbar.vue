@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
+import SvgIcon from './SvgIcon.vue'
 
 const route = useRoute()
 const menuOpen = ref(false)
@@ -33,15 +34,23 @@ const links = [
   >
     <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16">
       <!-- Logo -->
-      <RouterLink to="/" class="flex items-center gap-2" @click="menuOpen = false">
+      <RouterLink
+        to="/"
+        class="flex items-center gap-2"
+        @click="menuOpen = false"
+      >
         <span
           :class="[
-            'text-xl font-bold transition-colors',
-            scrolled ? 'text-[#4A7C59]' : 'text-white drop-shadow-sm'
+            'flex items-center gap-2 text-xl font-bold transition-colors',
+            scrolled ? 'text-[#4A7C59]' : 'text-white drop-shadow-sm',
           ]"
           style="font-family: 'Nunito', sans-serif;"
         >
-          🌿 Autant Goûter
+          <SvgIcon
+            name="leaf"
+            :class="['w-6 h-6 shrink-0', scrolled ? 'text-[#4A7C59]' : 'text-white']"
+          />
+          Autant Goûter
         </span>
       </RouterLink>
 
@@ -68,9 +77,10 @@ const links = [
           href="https://www.doordash.com/store/autant-go%C3%BBter-sainte-ad%C3%A8le-27829588/"
           target="_blank"
           rel="noopener"
-          class="bg-[#D4845A] text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-[#c0734a] transition-colors"
+          class="inline-flex items-center gap-2 bg-[#D4845A] text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-[#c0734a] transition-colors"
         >
-          Commander 🛵
+          Commander
+          <SvgIcon name="truck" class="w-4 h-4" />
         </a>
       </div>
 
@@ -107,10 +117,11 @@ const links = [
         href="https://www.doordash.com/store/autant-go%C3%BBter-sainte-ad%C3%A8le-27829588/"
         target="_blank"
         rel="noopener"
-        class="bg-[#D4845A] text-white text-center font-bold px-4 py-3 rounded-full"
+        class="inline-flex items-center justify-center gap-2 bg-[#D4845A] text-white text-center font-bold px-4 py-3 rounded-full w-full"
         @click="menuOpen = false"
       >
-        Commander via DoorDash 🛵
+        Commander via DoorDash
+        <SvgIcon name="truck" class="w-5 h-5 shrink-0" />
       </a>
     </div>
   </nav>
